@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Первая страница</title>
+</head>
+<body>
+<form action="/test" method="post">
+    <p>
+        <label>
+            Однострочное поле ввода: <input type="text" placeholder="Введите текст" name="singleLineInputField">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Многострочное поле ввода: <textarea placeholder="Введите текст" name="multilineInputField"></textarea>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Чекбокс: <input type="checkbox" name="checkbox">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Радио-баттоны:
+            <input checked type="radio" value="1" name="radiobutton">
+            <input type="radio" value="2" name="radiobutton">
+            <input type="radio" value="3" name="radiobutton">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Выпадающий список с множественным выбором:
+            <select multiple="multiple" size="3" name="multipleSelectionDropdownList">
+                <option value="1">Текст 1</option>
+                <option value="2">Текст 2</option>
+                <option value="3">Текст 3</option>
+            </select>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Выпадающий список с единичным выбором:
+            <select name="singleSelectionDropdownList">
+                <option value="1">Текст 1</option>
+                <option value="2">Текст 2</option>
+                <option value="3">Текст 3</option>
+            </select>
+        </label>
+    </p>
+
+    <p>
+        <button type="submit">Отправить</button>
+    </p>
+</form>
+Ссылка на вторую страницу: <a href="SecondPage.html">Вторая страница</a>
+</body>
+</html>
