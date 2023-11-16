@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    max-width: 760px;
+    background-color: #FEEED5;
+    font-family: Arial, sans-serif;
+    color: #6E6364;
+}
+
+.header {
+    margin: 20px 20px -5px 20px;
+    font-size: 28px;
+}
+
+.paragraph {
+    text-align: justify;
+    margin: 20px 20px -10px 20px;
+    font-size: 15px;
+}
+
+.paragraph-name {
+    color: #378DB2;
+    font-weight: bolder;
+}
+
+.strikethrough-text {
+    text-decoration: line-through;
+}
+
+.text {
+    text-indent: 20px;
+    line-height: 20px;
+}
