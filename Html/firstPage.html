@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Первая страница</title>
 </head>
 <body>
 <form action="/test" method="post">
-    <p>
+    <div>
         <label>
             Однострочное поле ввода: <input type="text" placeholder="Введите текст" name="singleLineInputField">
         </label>
-    </p>
+    </div>
 
-    <p>
+    <div>
         <label>
             Многострочное поле ввода: <textarea placeholder="Введите текст" name="multilineInputField"></textarea>
         </label>
-    </p>
+    </div>
 
-    <p>
+    <div>
         <label>
-            Чекбокс: <input type="checkbox" name="checkbox">
+            <input type="checkbox" name="checkbox"> Чекбокс
         </label>
-    </p>
+    </div>
 
-    <p>
+    <div>
         <label>
-            Радио-баттоны:
-            <input checked type="radio" value="1" name="radiobutton">
-            <input type="radio" value="2" name="radiobutton">
-            <input type="radio" value="3" name="radiobutton">
+            <input checked type="radio" value="1" name="radioButton">Вариант 1
         </label>
-    </p>
+        <label>
+            <input type="radio" value="2" name="radioButton">Вариант 2
+        </label>
+        <label>
+            <input type="radio" value="3" name="radioButton">Вариант 3
+        </label>
+    </div>
 
-    <p>
+    <div>
         <label>
             Список с множественным выбором:
             <select multiple="multiple" size="3" name="multipleSelectionDropdownList">
@@ -42,9 +45,9 @@
                 <option value="3">Текст 3</option>
             </select>
         </label>
-    </p>
+    </div>
 
-    <p>
+    <div>
         <label>
             Выпадающий список с единичным выбором:
             <select name="singleSelectionDropdownList">
@@ -53,11 +56,11 @@
                 <option value="3">Текст 3</option>
             </select>
         </label>
-    </p>
+    </div>
 
-    <p>
+    <div>
         <button type="submit">Отправить</button>
-    </p>
+    </div>
 </form>
 Ссылка на вторую страницу: <a href="secondPage.html">Вторая страница</a>
 </body>
