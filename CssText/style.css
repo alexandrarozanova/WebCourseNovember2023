@@ -1,20 +1,23 @@
 * {
     box-sizing: border-box;
-    max-width: 760px;
+}
+
+body {
+    max-width: 700px;
     background-color: #FEEED5;
     font-family: Arial, sans-serif;
+    font-size: 14px;
     color: #6E6364;
 }
 
 .header {
-    margin: 20px 20px -5px 20px;
-    font-size: 28px;
+    margin: 20px 20px 15px;
+    font-weight: lighter;
 }
 
 .paragraph {
     text-align: justify;
-    margin: 20px 20px -10px 20px;
-    font-size: 15px;
+    margin: 10px 20px;
 }
 
 .paragraph-name {
