@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+table {
+    max-width: 1075px;
+    text-align: justify;
+    font-size: 22px;
+    font-family: Calibri Regular, sans-serif;
+    border-collapse: collapse;
+}
+
+.header {
+    background-color: #3598DB;
+    color: #ECFAFF;
+    font-weight: 500;
+    border: 1px solid white;
+}
+
+.first-column {
+    padding: 17px 70px 10px 10px;
+}
+
+.second-column {
+    padding: 17px 70px 10px 10px;
+}
+
+.third-column {
+    padding: 17px 225px 10px 10px;
+}
+
+.fourth-column {
+    padding: 17px 125px 10px 10px;
+}
+
+td {
+    padding: 15px 10px;
+    font-size: 20px;
+    border: 1px solid #D6D6D6;
+}
+
+.odd-line {
+    background-color: #EAEAEA;
+}
