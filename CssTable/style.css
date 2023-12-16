@@ -2,43 +2,42 @@
     box-sizing: border-box;
 }
 
-table {
+.table-page {
     max-width: 1075px;
     text-align: justify;
-    font-size: 22px;
-    font-family: Calibri Regular, sans-serif;
+    font-size: 23px;
+    font-family: "Calibri Regular", sans-serif;
     border-collapse: collapse;
+}
+
+.table-page th {
+    padding: 13px 10px;
 }
 
 .header {
     background-color: #3598DB;
     color: #ECFAFF;
     font-weight: 500;
-    border: 1px solid white;
-}
-
-.first-column {
-    padding: 17px 70px 10px 10px;
-}
-
-.second-column {
-    padding: 17px 70px 10px 10px;
-}
-
-.third-column {
-    padding: 17px 225px 10px 10px;
-}
-
-.fourth-column {
-    padding: 17px 125px 10px 10px;
-}
-
-td {
-    padding: 15px 10px;
-    font-size: 20px;
     border: 1px solid #D6D6D6;
 }
 
-.odd-line {
+.first-name, .last-name {
+    width: 175px;
+}
+
+.job-title {
+    width: 310px;
+}
+
+.twitter {
+    width: 200px;
+}
+
+.table-page td {
+    padding: 12px 10px;
+    border: 1px solid #D6D6D6;
+}
+
+.table-page tr:nth-child(odd) {
     background-color: #EAEAEA;
 }
