@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #666663;
+}
+
+.header {
+    font-weight: lighter;
+    margin: 20px 0 5px 20px;
+}
+
+.form-page {
+    background-color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bolder;
+    width: 745px;
+}
+
+.form-background {
+    background-color: #FEEED5;
+    padding: 0 0 13px 20px;
+}
+
+.form-page p {
+    padding-top: 18px;
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+
+.form-addition {
+    font-weight: lighter;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+button {
+    background: #388DB2;
+    border: none;
+    color: #FFFFFF;
+    font-weight: 600;
+    width: 150px;
+    height: 30px;
+    position: relative;
+    left: 555px;
+}
+
+.text-field {
+    width: 705px;
+    height: 30px;
+    border: none;
+    text-indent: 10px;
+}
+
+.comment {
+    height: 115px;
+    padding-top: 10px;
+}
