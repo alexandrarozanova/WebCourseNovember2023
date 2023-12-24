@@ -49,10 +49,10 @@
 
     const maxCitiesCountCountries = getMaxCitiesCountCountries(countries);
 
-    console.log("Страны с максимальным количеством городов:")
+    console.log("Страны с максимальным количеством городов:");
     maxCitiesCountCountries.forEach((country) => console.log(country.countryName));
 
     const countriesObject = getCountriesObject(countries);
-    console.log("Объект с информацией по странам в формате 'ключ (название страны): значение (численность населения)':")
+    console.log("Объект с информацией по странам в формате 'ключ (название страны): значение (численность населения)':");
     console.log(countriesObject);
 })();
