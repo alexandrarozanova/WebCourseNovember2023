@@ -1,62 +1,62 @@
 (function () {
-    function sortArrayByDescending(array) {
-        array.sort((number1, number2) => number2 - number1);
+    function sortArrayByDescending(numbers) {
+        numbers.sort((number1, number2) => number2 - number1);
     }
 
-    function getArrayFiveFirstElements(array, elementsCount) {
+    function getFirstElements(array, elementsCount) {
         return array.slice(0, elementsCount);
     }
 
-    function getArrayFiveLastElements(array, elementsCount) {
+    function getLastElements(array, elementsCount) {
         return array.slice(-elementsCount);
     }
 
-    function getArrayEvenNumbersSum(array) {
-        return array.reduce(function (sum, number) {
-            if (number % 2 === 0) {
-                sum += number;
-            }
-
-            return sum;
-        }, 0);
+    function getEvenNumbersSum(numbers) {
+        return numbers
+            .filter(number => number % 2 === 0)
+            .reduce((sum, number) => sum + number, 0);
     }
 
-    function fillArray(array) {
+    function fillArray(arrayLength) {
+        const array = new Array(arrayLength);
+
         for (let i = 0; i < array.length; i++) {
             array[i] = i + 1;
         }
+
+        return array;
     }
 
-    function getArraySquaresEvenNumbersList(array) {
-        return array.filter((number) => number % 2 === 0).map((number) => number * number);
+    function getEvenNumbersSquares(numbers) {
+        return numbers
+            .filter(number => number % 2 === 0)
+            .map(number => number * number);
     }
 
-    const numbersArray = [1, 10, 15, 25, 2, 5, 9, 3, 6, 11, 7, 77];
+    const array1 = [1, 10, 15, 25, 2, 5, 9, 3, 6, 11, 7, 77];
 
     console.log("Массив чисел:");
-    console.log(numbersArray);
+    console.log(array1);
 
-    sortArrayByDescending(numbersArray);
+    sortArrayByDescending(array1);
     console.log("Отсортированный по убыванию массив чисел:");
-    console.log(numbersArray);
+    console.log(array1);
 
     console.log("Пять первых чисел массива:");
-    console.log(getArrayFiveFirstElements(numbersArray, 5));
+    console.log(getFirstElements(array1, 5));
 
     console.log("Пять последних чисел массива:");
-    console.log(getArrayFiveLastElements(numbersArray, 5));
+    console.log(getLastElements(array1, 5));
 
-    const arrayEvenNumbersSum = getArrayEvenNumbersSum(numbersArray);
+    const arrayEvenNumbersSum = getEvenNumbersSum(array1);
     console.log("Сумма четных чисел массива:");
     console.log(arrayEvenNumbersSum);
 
-    const array = new Array(100);
-
-    fillArray(array);
+    const array2 = fillArray(100);
     console.log("Массив чисел:");
-    console.log(array);
+    console.log(array2);
 
-    const arraySquaresEvenNumbersList = getArraySquaresEvenNumbersList(array);
+    const evenNumbersSquares = getEvenNumbersSquares(array2);
     console.log("Список квадратов четных чисел данного массива:");
-    console.log(arraySquaresEvenNumbersList);
+    console.log(evenNumbersSquares);
 })();
