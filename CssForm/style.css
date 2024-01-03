@@ -9,49 +9,55 @@ body {
 
 .header {
     font-weight: lighter;
-    margin: 20px 0 5px 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding: 0 22px;
 }
 
 .form-page {
-    background-color: #FFFFFF;
+    background-color: #FFF;
     font-size: 14px;
     font-weight: bolder;
-    width: 745px;
+    max-width: 745px;
 }
 
 .form-background {
     background-color: #FEEED5;
-    padding: 0 0 13px 20px;
+    padding: 0 22px 10px;
 }
 
-.form-page p {
-    padding-top: 18px;
-    margin-top: 0;
-    margin-bottom: 7px;
+.form-background div {
+    padding-top: 15px;
 }
 
 .form-addition {
     font-weight: lighter;
-    margin-top: 0;
-    margin-bottom: 12px;
 }
 
-button {
+.form-background .button {
     background: #388DB2;
     border: none;
-    color: #FFFFFF;
+    color: #FFF;
     font-weight: 600;
-    width: 150px;
-    height: 30px;
-    position: relative;
-    left: 555px;
+    margin-top: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.form-background .button:hover {
+    background: #32728D;
 }
 
 .text-field {
-    width: 705px;
-    height: 30px;
+    width: 100%;
+    height: 35px;
     border: none;
-    text-indent: 10px;
+    margin-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .comment {
