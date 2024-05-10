@@ -2,34 +2,41 @@
     box-sizing: border-box;
 }
 
-body {
-    max-width: 700px;
-    background-color: #FEEED5;
+.course-page {
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: #6E6364;
+    background-color: #FEEED5;
+    max-width: 749px;
+    padding: 10px 13px 1px 13px;
 }
 
 .header {
-    margin: 20px 20px 15px;
     font-weight: lighter;
+    font-size: 28px;
+    margin: 0 0 12px 0;
 }
 
-.paragraph {
-    text-align: justify;
-    margin: 10px 20px;
-}
-
-.paragraph-name {
+.name {
     color: #378DB2;
     font-weight: bolder;
+}
+
+.paragraphs p, .description p {
+    margin: 0 0 10px 0;
 }
 
 .strikethrough-text {
     text-decoration: line-through;
 }
 
-.text {
-    text-indent: 20px;
-    line-height: 20px;
+.description {
+    font-size: 15px;
+    text-align: justify;
+    text-indent: 18px;
+    line-height: 22px;
+}
+
+.paragraphs .last-paragraph {
+    margin-bottom: 8px;
 }
