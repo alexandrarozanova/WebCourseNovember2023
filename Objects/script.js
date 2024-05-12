@@ -1,6 +1,6 @@
 (function () {
     function getMaxCitiesCountCountries(countries) {
-        const maxCitiesCount = countries.reduce((maxCitiesCount, country) => Math.max(country.cities.length), 0);
+        const maxCitiesCount = countries.reduce((maxCitiesCount, country) => Math.max(maxCitiesCount, country.cities.length), 0);
 
         return countries.filter(country => country.cities.length === maxCitiesCount);
     }
@@ -8,9 +8,9 @@
     function getCountriesPopulations(countries) {
         const countriesPopulations = {};
 
-        countries.forEach(country =>
-            countriesPopulations[country.name] = country.cities.reduce((totalPopulation, city) => totalPopulation + city.population, 0));
-
+        countries.forEach(country => {
+            countriesPopulations[country.name] = country.cities.reduce((totalPopulation, city) => totalPopulation + city.population, 0)
+        });
         return countriesPopulations;
     }
 
