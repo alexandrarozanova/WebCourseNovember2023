@@ -17,7 +17,7 @@
             .reduce((sum, number) => sum + number, 0);
     }
 
-    function fillArray(arrayLength) {
+    function createNumbersArray(arrayLength) {
         const array = new Array(arrayLength);
 
         for (let i = 0; i < array.length; i++) {
@@ -52,7 +52,7 @@
     console.log("Сумма четных чисел массива:");
     console.log(arrayEvenNumbersSum);
 
-    const array2 = fillArray(100);
+    const array2 = createNumbersArray(100);
     console.log("Массив чисел:");
     console.log(array2);
 
