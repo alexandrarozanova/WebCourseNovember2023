@@ -9,8 +9,9 @@
         const countriesPopulations = {};
 
         countries.forEach(country => {
-            countriesPopulations[country.name] = country.cities.reduce((totalPopulation, city) => totalPopulation + city.population, 0)
+            countriesPopulations[country.name] = country.cities.reduce((totalPopulation, city) => totalPopulation + city.population, 0);
         });
+
         return countriesPopulations;
     }
 
