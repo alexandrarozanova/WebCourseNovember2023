@@ -8,13 +8,13 @@
     color: #6E6364;
     background-color: #FEEED5;
     max-width: 749px;
-    padding: 10px 13px 1px 13px;
+    padding: 10px 13px 1px;
 }
 
 .header {
     font-weight: lighter;
     font-size: 28px;
-    margin: 0 0 12px 0;
+    margin: 0 0 12px;
 }
 
 .name {
@@ -23,7 +23,7 @@
 }
 
 .paragraphs p, .description p {
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
 }
 
 .strikethrough-text {
@@ -37,6 +37,6 @@
     line-height: 22px;
 }
 
-.paragraphs .last-paragraph {
+.paragraphs :last-child {
     margin-bottom: 8px;
 }
