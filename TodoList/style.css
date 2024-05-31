@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+.todo-list-page .add-todo-form > * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.todo-list-page {
+    margin: 0 auto;
+    max-width: 800px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+.todo-list-page .header {
+    text-align: center;
+}
+
+.todo-list-page .error-message {
+    color: #ff0000;
+    display: none;
+}
+
+.todo-list-page .invalid ~ .error-message {
+    display: block;
+}
+
+.todo-list-page .invalid {
+    border-color: #ff0000;
+}
+
+.todo-list-page .todo-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.todo-list-page .add-button, .delete-button, .edit-button, .cancel-button, .save-button {
+    background-color: #6C747B;
+    color: #FFFFFF;
+    border: none;
+    padding: 3px 15px;
+    margin-left: 5px;
+}
+
+.todo-list-page .add-button:hover, .delete-button:hover, .edit-button:hover, .cancel-button:hover, .save-button:hover {
+    background-color: #343A3F;
+    cursor: pointer;
+}
+
+.todo-list-page .todo-item {
+    margin-top: 10px;
+}
+
+.todo-list-page .new-todo-text-field, .edit-text-field {
+    width: 500px;
+}
