@@ -11,36 +11,45 @@
     border: 1px solid;
 }
 
-.temperature-conversion-body div {
+.temperature-conversion-body .temperature-section {
     margin: 15px 0;
 }
 
 .conversion-button {
     background-color: #388495;
-    color: #FFFFFF;
+    color: #FFF;
     border: none;
     padding: 3px 15px;
 }
 
-.submit:hover {
+.enabled:hover {
     cursor: pointer;
     background-color: #45B3B7;
 }
 
-label > span {
+.disabled{
+    background-color: #808080;
+}
+
+.scale > .name {
     display: inline-block;
     width: 300px;
 }
 
+.text-field {
+    width: 150px;
+}
+
 .error-message {
-    color: #ff0000;
+    color: #F00;
     display: none;
     margin-top: 5px;
-    margin-left: auto;
+    margin-left: 55%;
+    width: 250px;
 }
 
 .invalid {
-    border-color: #ff0000;
+    border-color: #F00;
 }
 
 .invalid + .error-message {

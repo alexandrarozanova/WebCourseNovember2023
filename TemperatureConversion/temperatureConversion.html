@@ -12,33 +12,35 @@
     <h1 class="header">Перевод температур</h1>
 
     <div class="temperature-conversion-body">
-        <div>
-            <label>
-                <span>Температура по шкале Цельсия:</span>
+        <div class="temperature-section">
+            <label class="scale">
+                <span class="name">Температура по шкале Цельсия:</span>
                 <input type="text"
                        class="text-field"
                        id="celsius">
                 <span class="error-message invalid">Необходимо ввести число</span>
             </label>
         </div>
-        <div>
+        <div class="temperature-section">
             <button type="submit"
                     class="conversion-button"
                     id="conversion-button">Конвертировать
             </button>
         </div>
-        <div>
-            <label>
-                <span>Температура по шкале Фаренгейта:</span>
-                <input type="text" readonly
+        <div class="temperature-section">
+            <label class="scale">
+                <span class="name">Температура по шкале Фаренгейта:</span>
+                <input type="text"
+                       readonly
                        class="text-field"
                        id="fahrenheit">
             </label>
         </div>
-        <div>
-            <label>
-                <span>Температура по шкале Кельвина:</span>
-                <input type="text" readonly
+        <div class="temperature-section">
+            <label class="scale">
+                <span class="name">Температура по шкале Кельвина:</span>
+                <input type="text"
+                       readonly
                        class="text-field"
                        id="kelvin">
             </label>
