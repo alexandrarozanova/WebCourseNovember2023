@@ -1,26 +1,25 @@
-* {
-    box-sizing: border-box;
-}
-
 .todo-list-page .add-todo-form > * {
     display: inline-block;
     vertical-align: top;
 }
 
 .todo-list-page {
-    margin: 0 auto;
-    max-width: 800px;
+    margin: 5px auto;
+    padding: 0 5px;
+    max-width: 700px;
     font-family: Arial, sans-serif;
     font-size: 18px;
 }
 
-.todo-list-page .header {
+.todo-list-page .header,
+.todo-list-page .add-todo-form {
     text-align: center;
 }
 
 .todo-list-page .error-message {
-    color: #ff0000;
+    color: #F00;
     display: none;
+    text-align: left;
 }
 
 .todo-list-page .invalid ~ .error-message {
@@ -28,7 +27,7 @@
 }
 
 .todo-list-page .invalid {
-    border-color: #ff0000;
+    border-color: #F00;
 }
 
 .todo-list-page .todo-list {
@@ -36,23 +35,32 @@
     padding-left: 0;
 }
 
-.todo-list-page .add-button, .delete-button, .edit-button, .cancel-button, .save-button {
+.todo-list-page .button {
+    cursor: pointer;
     background-color: #6C747B;
-    color: #FFFFFF;
+    color: #FFF;
     border: none;
     padding: 3px 15px;
     margin-left: 5px;
 }
 
-.todo-list-page .add-button:hover, .delete-button:hover, .edit-button:hover, .cancel-button:hover, .save-button:hover {
+.todo-list-page .buttons {
+    float: right;
+}
+
+.todo-list-page .button:hover {
     background-color: #343A3F;
-    cursor: pointer;
 }
 
 .todo-list-page .todo-item {
-    margin-top: 10px;
+    max-width: 650px;
+    margin: 10px 45px 0;
 }
 
-.todo-list-page .new-todo-text-field, .edit-text-field {
-    width: 500px;
+.todo-list-page .new-todo-text-field {
+    width: 480px;
+}
+
+.todo-list-page .edit-text-field {
+    width: 350px;
 }
