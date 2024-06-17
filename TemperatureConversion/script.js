@@ -6,21 +6,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let celsiusTemperature = celsiusTemperatureTextField.value;
 
-    conversionButton.disabled = false;
+    celsiusTemperatureTextField.addEventListener("keyup", function () {
+        celsiusTemperature = celsiusTemperatureTextField.value;
+        celsiusTemperatureTextField.classList.remove("invalid");
+
+        if (isNaN(celsiusTemperature) || celsiusTemperature.length === 0) {
+            celsiusTemperatureTextField.classList.add("invalid");
+            conversionButton.disabled = true;
+        } else {
+            conversionButton.disabled = false;
+        }
+    });
 
     conversionButton.addEventListener("click", function () {
-        celsiusTemperatureTextField.addEventListener("keyup", function () {
-            celsiusTemperature = celsiusTemperatureTextField.value;
-            celsiusTemperatureTextField.classList.remove("invalid");
-
-            if (isNaN(celsiusTemperature) || celsiusTemperature.length === 0) {
-                celsiusTemperatureTextField.classList.add("invalid");
-                conversionButton.disabled = true;
-            } else {
-                conversionButton.disabled = false;
-            }
-        });
-
         fahrenheitTemperatureTextField.value = Number(celsiusTemperature) * 9 / 5 + 32;
         kelvinTemperatureTextField.value = Number(celsiusTemperature) + 273.15;
     });
