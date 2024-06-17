@@ -22,12 +22,12 @@
     padding: 3px 15px;
 }
 
-.enabled:hover {
+.conversion-button:enabled:hover {
     cursor: pointer;
     background-color: #45B3B7;
 }
 
-.disabled{
+.conversion-button:disabled {
     background-color: #808080;
 }
 
