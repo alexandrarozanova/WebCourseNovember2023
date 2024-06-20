@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PhoneBook</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="libs/jquery-ui-1.13.3/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="libs/jquery-3.7.1.js"></script>
+    <script defer src="libs/jquery-ui-1.13.3/jquery-ui.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+<div class="phone-book-page">
+    <h1 class="header center-position">Телефонная книга</h1>
+
+    <form class="add-contact" id="add-contact">
+        <div class="contact-data">
+            <label>
+                <span class="data-description">Введите фамилию:</span>
+                <input type="text"
+                       class="text-field"
+                       id="surname">
+                <span class="error-message">Поле не заполнено</span>
+            </label>
+        </div>
+        <div class="contact-data">
+            <label>
+                <span class="data-description">Введите имя:</span>
+                <input type="text"
+                       class="text-field"
+                       id="name">
+                <span class="error-message">Поле не заполнено</span>
+            </label>
+        </div>
+        <div class="contact-data">
+            <label>
+                <span class="data-description">Введите номер телефона:</span>
+                <input type="text"
+                       class="text-field"
+                       id="phone-number">
+                <span class="error-message">Поле не заполнено</span>
+            </label>
+        </div>
+        <div class="add-button-container center-position">
+            <button class="button" id="add-button">Добавить</button>
+        </div>
+
+        <div style="display: none;" id="validation-dialog" title="Ошибка добавления контакта">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                Для добавления контакта необходимо заполнить обязательные поля.
+            </p>
+        </div>
+        <div style="display: none;" id="confirm-delete-dialog" title="Подтвердите удаление контакта">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                Данный контакт будет удален без возможности восстановления. Вы уверены?
+            </p>
+        </div>
+        <div style="display: none;" id="confirm-multiple-delete-dialog" title="Подтвердите удаление контактов">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                Данные контакты будут удалены без возможности восстановления. Вы уверены?
+            </p>
+        </div>
+        <div style="display: none;" id="existence-dialog" title="Ошибка добавления контакта">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                Контакт с таким номером уже существует.
+            </p>
+        </div>
+    </form>
+
+    <div class="contact-table">
+        <div class="filter-text-field">
+            <label>
+                Поиск:
+                <input type="text" id="filter">
+            </label>
+            <button class="button" id="submit-filter-button">Применить</button>
+            <button class="button" id="cancel-filter-button">Отменить</button>
+        </div>
+        <table>
+            <thead>
+            <tr class="table-header">
+                <th>
+                    <label>
+                        <input type="checkbox" id="selection-all" name="select">
+                    </label>
+                </th>
+                <th class="id" id="id">№</th>
+                <th class="contact-surname" id="contact-surname">Фамилия</th>
+                <th class="contact-name" id="contact-name">Имя</th>
+                <th class="contact-phone-number" id="contact-phone-number">Номер телефона</th>
+                <th class="buttons" id="buttons"></th>
+            </tr>
+            </thead>
+            <tbody class="table-body" id="table-body">
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

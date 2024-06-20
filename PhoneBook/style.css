@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+.phone-book-page {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.phone-book-page .center-position {
+    text-align: center;
+}
+
+.phone-book-page .add-contact,
+.phone-book-page .contact-table {
+    display: inline-block;
+    margin: 0 100px 15px;
+}
+
+.phone-book-page .add-contact .contact-data > label > .data-description {
+    display: inline-block;
+    width: 250px;
+}
+
+.phone-book-page .contact-data {
+    margin-bottom: 10px;
+}
+
+.phone-book-page .text-field {
+    width: 300px;
+}
+
+.phone-book-page .button {
+    background-color: #4F81BD;
+    color: #FFF;
+    border: none;
+    padding: 3px 15px;
+}
+
+.phone-book-page .button:enabled:hover {
+    cursor: pointer;
+    background-color: #5A95D1;
+}
+
+.phone-book-page .button:disabled {
+    background-color: #808080;
+}
+
+.phone-book-page .contact-table {
+    vertical-align: top;
+}
+
+.phone-book-page .table-header th {
+    background-color: #4F81BD;
+    color: #FFF;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.phone-book-page .id,
+.phone-book-page .buttons {
+    width: 50px;
+}
+
+.phone-book-page .checkbox {
+    width: 30px;
+}
+
+.phone-book-page .contact-surname,
+.phone-book-page .contact-phone-number {
+    width: 300px;
+}
+
+.phone-book-page .contact-name {
+    width: 200px;
+}
+
+.phone-book-page .table-body tr {
+    background-color: #D0D8E8;
+    height: 45px;
+}
+
+.phone-book-page .error-message {
+    display: none;
+    color: #F00;
+    margin-left: 60%;
+}
+
+.phone-book-page .error-message.edit-form {
+    margin-left: 0;
+}
+
+.phone-book-page .invalid ~ .error-message {
+    display: block;
+}
+
+.phone-book-page .invalid {
+    border-color: #F00;
+}
+
+.phone-book-page .image-button {
+    max-width: 20px;
+    max-height: 20px;
+    cursor: pointer;
+}
+
+.ui-widget-overlay {
+    opacity: 0.7;
+}
+
+.phone-book-page .not-filtered {
+    display: none;
+}
+
+.phone-book-page .filter-text-field {
+    margin-bottom: 5px;
+}
+
+.phone-book-page .filter-text-field .button {
+    margin-top: 5px;
+}
