@@ -12,16 +12,18 @@
     <h1 class="header">TODO List</h1>
 
     <form class="add-todo-form" id="add-todo-form">
-        <div>
+        <div class="container">
             <label>
                 <input type="text"
-                       class="new-todo-text-field"
+                       class="new-todo-text-field text-field"
                        id="new-todo-text-field">
                 <span class="error-message">Необходимо указать текст</span>
             </label>
         </div>
 
-        <button class="add-button button" id="add-button">Добавить</button>
+        <div class="container">
+            <button class="add-button button" id="add-button">Добавить</button>
+        </div>
     </form>
 
     <ul class="todo-list" id="todo-list"></ul>

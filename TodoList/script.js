@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function setViewMode() {
             newTodo.innerHTML = `
-                <span class="todo-item-text"></span>
-                <div class="buttons">
+                <div class="container">
+                    <div class="todo-item-text"></div>
+                </div>
+                <div class="buttons container">
                     <button class="delete-button button" type="button">Удалить</button>
                     <button class="edit-button button" type="button">Редактировать</button>
                 </div>
@@ -35,8 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
             newTodo.querySelector(".edit-button").addEventListener("click", function () {
                 newTodo.innerHTML = `
                     <form class="edit-todo-form">
-                        <input type="text" class="edit-text-field">
-                        <div class="buttons">
+                        <div class="container edit-error">
+                            <input type="text" class="edit-text-field text-field">
+                        </div>
+                        <div class="buttons container">
                             <button class="cancel-button button" type="button">Отменить</button>
                             <button class="save-button button">Сохранить</button>
                         </div>
@@ -57,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const changedTodoText = editTextField.value.trim();
 
                     if (changedTodoText.length === 0) {
-                        editTextField.classList.add("invalid");
+                        newTodo.querySelector(".edit-error").classList.add("invalid");
                         return;
                     }
 
