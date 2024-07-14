@@ -12,12 +12,12 @@
 </head>
 <body>
 <div class="phone-book-page">
-    <h1 class="header center-position">Телефонная книга</h1>
+    <h1 class="header">Телефонная книга</h1>
 
     <form class="add-contact" id="add-contact">
         <div class="contact-data">
             <label>
-                <span class="data-description">Введите фамилию:</span>
+                <span class="data-description">Фамилия:</span>
                 <input type="text"
                        class="text-field"
                        id="surname">
@@ -26,7 +26,7 @@
         </div>
         <div class="contact-data">
             <label>
-                <span class="data-description">Введите имя:</span>
+                <span class="data-description">Имя:</span>
                 <input type="text"
                        class="text-field"
                        id="name">
@@ -35,51 +35,63 @@
         </div>
         <div class="contact-data">
             <label>
-                <span class="data-description">Введите номер телефона:</span>
+                <span class="data-description">Номер телефона:</span>
                 <input type="text"
                        class="text-field"
                        id="phone-number">
                 <span class="error-message">Поле не заполнено</span>
             </label>
         </div>
-        <div class="add-button-container center-position">
+        <div class="add-button-container">
             <button class="button" id="add-button">Добавить</button>
         </div>
 
         <div style="display: none;" id="validation-dialog" title="Ошибка добавления контакта">
             <p>
-                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                <span class="ui-icon ui-icon-alert"></span>
                 Для добавления контакта необходимо заполнить обязательные поля.
             </p>
         </div>
         <div style="display: none;" id="confirm-delete-dialog" title="Подтвердите удаление контакта">
             <p>
-                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                <span class="ui-icon ui-icon-alert"></span>
                 Данный контакт будет удален без возможности восстановления. Вы уверены?
             </p>
         </div>
         <div style="display: none;" id="confirm-multiple-delete-dialog" title="Подтвердите удаление контактов">
             <p>
-                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                <span class="ui-icon ui-icon-alert"></span>
                 Данные контакты будут удалены без возможности восстановления. Вы уверены?
             </p>
         </div>
         <div style="display: none;" id="existence-dialog" title="Ошибка добавления контакта">
             <p>
-                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                <span class="ui-icon ui-icon-alert"></span>
                 Контакт с таким номером уже существует.
+            </p>
+        </div>
+        <div style="display: none;" id="filter-error-dialog" title="Ошибка фильтрации">
+            <p>
+                <span class="ui-icon ui-icon-alert"></span>
+                Необходимо заполнить поле поиска.
             </p>
         </div>
     </form>
 
-    <div class="contact-table">
-        <div class="filter-text-field">
-            <label>
-                Поиск:
-                <input type="text" id="filter">
-            </label>
-            <button class="button" id="submit-filter-button">Применить</button>
-            <button class="button" id="cancel-filter-button">Отменить</button>
+    <div class="contacts-table">
+        <button class="delete-all-button button" id="delete-all-button">Удалить выбранные</button>
+        <div class="filter-container" id="filter-container">
+            <div class="filter-text-field">
+                <label>
+                    Поиск:
+                    <input type="text" id="filter">
+                    <span class="error-message">Поле не заполнено</span>
+                </label>
+            </div>
+            <div class="filter-buttons">
+                <button class="button" id="submit-filter-button">Применить</button>
+                <button class="button" id="cancel-filter-button">Отменить</button>
+            </div>
         </div>
         <table>
             <thead>
