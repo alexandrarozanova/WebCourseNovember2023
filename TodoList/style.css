@@ -6,14 +6,20 @@
 .todo-list-page .container {
     display: inline-block;
     vertical-align: top;
+    margin-bottom: 5px;
 }
 
 .todo-list-page {
-    margin: 5px;
+    margin: 0 auto;
+    max-width: 36em;
     padding: 0 5px;
-    width: 700px;
     font-family: Arial, sans-serif;
     font-size: 18px;
+}
+
+.todo-list-page .header {
+    margin: 20px auto;
+    width: 5em;
 }
 
 .todo-list-page .error-message {
@@ -42,10 +48,6 @@
     border: none;
     padding: 3px 15px;
     margin-left: 5px;
-}
-
-.todo-list-page .button {
-    text-align: right;
 }
 
 .todo-list-page .button:hover {

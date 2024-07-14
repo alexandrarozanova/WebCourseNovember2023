@@ -37,14 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
             newTodo.querySelector(".edit-button").addEventListener("click", function () {
                 newTodo.innerHTML = `
                     <form class="edit-todo-form">
-                        <div class="container edit-error">
-                            <input type="text" class="edit-text-field text-field">
+                        <div class="container">
+                            <label>
+                                <input type="text" class="edit-text-field text-field">
+                                <span class="error-message">Необходимо указать текст</span>
+                            </label>
                         </div>
                         <div class="buttons container">
                             <button class="cancel-button button" type="button">Отменить</button>
                             <button class="save-button button">Сохранить</button>
                         </div>
-                        <span class="error-message">Необходимо указать текст</span>
                     </form>
                 `;
 
@@ -61,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const changedTodoText = editTextField.value.trim();
 
                     if (changedTodoText.length === 0) {
-                        newTodo.querySelector(".edit-error").classList.add("invalid");
+                        newTodo.querySelector(".edit-text-field").classList.add("invalid");
                         return;
                     }
 
