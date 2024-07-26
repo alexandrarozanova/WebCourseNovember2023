@@ -39,6 +39,7 @@
                 <input type="text"
                        class="text-field"
                        id="phone-number">
+                <span class="existence-error">Контакт с таким номером уже существует.</span>
                 <span class="error-message">Поле не заполнено</span>
             </label>
         </div>
@@ -46,12 +47,6 @@
             <button class="button" id="add-button">Добавить</button>
         </div>
 
-        <div style="display: none;" id="validation-dialog" title="Ошибка добавления контакта">
-            <p>
-                <span class="ui-icon ui-icon-alert"></span>
-                Для добавления контакта необходимо заполнить обязательные поля.
-            </p>
-        </div>
         <div style="display: none;" id="confirm-delete-dialog" title="Подтвердите удаление контакта">
             <p>
                 <span class="ui-icon ui-icon-alert"></span>
@@ -62,12 +57,6 @@
             <p>
                 <span class="ui-icon ui-icon-alert"></span>
                 Данные контакты будут удалены без возможности восстановления. Вы уверены?
-            </p>
-        </div>
-        <div style="display: none;" id="existence-dialog" title="Ошибка добавления контакта">
-            <p>
-                <span class="ui-icon ui-icon-alert"></span>
-                Контакт с таким номером уже существует.
             </p>
         </div>
         <div style="display: none;" id="filter-error-dialog" title="Ошибка фильтрации">

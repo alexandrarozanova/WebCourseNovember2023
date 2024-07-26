@@ -7,6 +7,13 @@ $(function () {
 
     let rowsCount = 1;
     let isDeleteButtonActivated = false;
+    let isChecked = false;
+
+    function changeContactsRowsNumbers() {
+        contactsTableBody.find(".new-contact").each(function (i) {
+            $(this).find(".contact-id").text(i + 1);
+        });
+    }
 
     function setFilterMode() {
         const filterTextField = $("#filter");
@@ -34,13 +41,20 @@ $(function () {
 
             const filterTextFieldValue = filterTextField.val().trim().toLowerCase();
 
+            let i = 0;
+
             contactsTableBody.find(".new-contact").each(function () {
                 $(this).addClass("not-filtered");
 
-                if ($(this).find(".contact-surname").text().toLowerCase() === filterTextFieldValue ||
-                    $(this).find(".contact-name").text().toLowerCase() === filterTextFieldValue ||
-                    $(this).find(".contact-phone-number").text().toLowerCase() === filterTextFieldValue) {
+                if ($(this).find(".contact-surname").text().toLowerCase().indexOf(filterTextFieldValue) !== -1 ||
+                    $(this).find(".contact-name").text().toLowerCase().indexOf(filterTextFieldValue) !== -1 ||
+                    $(this).find(".contact-phone-number").text().toLowerCase().indexOf(filterTextFieldValue) !== -1) {
                     $(this).removeClass("not-filtered");
+                }
+
+                if (!$(this).hasClass("not-filtered")) {
+                    $(this).find(".contact-id").text(i + 1);
+                    i++;
                 }
             });
         });
@@ -50,9 +64,9 @@ $(function () {
 
             contactsTableBody.find(".new-contact").removeClass("not-filtered");
             filterTextField.removeClass("invalid");
+            changeContactsRowsNumbers();
         });
     }
-
 
     setFilterMode();
 
@@ -65,80 +79,50 @@ $(function () {
             element.toggleClass("invalid", element.val().trim().length === 0);
         });
 
-        function checkDataValidation(dataTextField) {
+        if (contactPhoneNumberTextField.hasClass("invalid")) {
+            contactPhoneNumberTextField.removeClass("existence-invalid");
+        }
+
+        function isTextFieldNotEmpty(dataTextField) {
             return dataTextField.val().trim().length !== 0;
         }
 
-        const isCorrectData = checkDataValidation(contactSurnameTextField) && checkDataValidation(contactNameTextField) && checkDataValidation(contactPhoneNumberTextField);
-
-        if (!isCorrectData) {
-            $("#validation-dialog").dialog({
-                resizable: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                buttons: {
-                    "OK": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-
-            return;
-        }
-
-        const contactRowNumber = rowsCount;
-
-        function changeContactsRowsNumbers() {
-            isDeleteButtonActivated = true;
-
-            contactsTableBody.find(".new-contact").each(function (i) {
-                $(this).find(".contact-id").text(i + 1);
-            });
-        }
+        const isDataCorrect = isTextFieldNotEmpty(contactSurnameTextField) && isTextFieldNotEmpty(contactNameTextField) && isTextFieldNotEmpty(contactPhoneNumberTextField);
 
         let contactSurname = contactSurnameTextField.val().trim();
         let contactName = contactNameTextField.val().trim();
         let contactPhoneNumber = contactPhoneNumberTextField.val().trim();
 
-        const newContact = $("<tr>");
-        newContact.addClass("new-contact");
+        function isPhoneNumberUnique(contactPhoneNumber) {
+            let isUniqueNumber = true;
 
-        let isUniqueNumber = true;
-
-        function checkPhoneNumberExistence(contactPhoneNumber) {
             contactsTableBody.find(".contact-phone-number").each(function () {
                 if ($(this).text() === contactPhoneNumber) {
                     isUniqueNumber = false;
                     return false;
                 }
+
+                return true;
             });
 
-            if (!isUniqueNumber) {
-                return false;
-            }
+            return isUniqueNumber;
         }
 
-        checkPhoneNumberExistence(contactPhoneNumber);
+        contactPhoneNumberTextField.toggleClass("existence-invalid", !isPhoneNumberUnique(contactPhoneNumber));
 
-        if (!isUniqueNumber) {
-            $("#existence-dialog").dialog({
-                resizable: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                buttons: {
-                    "OK": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-
+        if (!isDataCorrect || !isPhoneNumberUnique(contactPhoneNumber)) {
             return;
         }
 
+        const contactRowNumber = rowsCount;
+
+        const newContact = $("<tr>");
+        newContact.addClass("new-contact");
+
         $("#selection-all").click(function () {
-            contactsTableBody.find(".new-contact input:checkbox").prop("checked", $(this).is(":checked"));
+            contactsTableBody.find(".new-contact:not(.not-filtered) input:checkbox").prop("checked", $(this).is(":checked"));
+
+            isChecked = contactsTableBody.find(".new-contact:not(.not-filtered) input:checkbox").is(":checked") === true;
         });
 
         $("#delete-all-button").click(function () {
@@ -151,9 +135,10 @@ $(function () {
                     buttons: {
                         "Удалить": function () {
                             contactsTableBody.find(".new-contact").each(function () {
-                                if ($(this).find(".checkbox").prop("checked")) {
+                                if ($(this).find(".checkbox").prop("checked") && !$(this).hasClass("not-filtered")) {
                                     $(this).remove();
                                     rowsCount--;
+                                    isDeleteButtonActivated = true;
                                     changeContactsRowsNumbers();
                                 }
                             });
@@ -186,10 +171,15 @@ $(function () {
                 </td>
             `);
 
+            newContact.find(".contact-checkbox input:checkbox").prop("checked", isChecked);
             newContact.find(".contact-id").text(contactRowNumber);
             newContact.find(".contact-surname").text(contactSurname);
             newContact.find(".contact-name").text(contactName);
             newContact.find(".contact-phone-number").text(contactPhoneNumber);
+
+            newContact.find(".contact-checkbox input:checkbox").change(function () {
+                isChecked = $(this).is(":checked");
+            });
 
             if (isDeleteButtonActivated) {
                 changeContactsRowsNumbers();
@@ -205,6 +195,7 @@ $(function () {
                         "Удалить": function () {
                             newContact.remove();
                             rowsCount--;
+                            isDeleteButtonActivated = true;
                             changeContactsRowsNumbers();
                             $(this).dialog("close");
                         },
@@ -222,32 +213,32 @@ $(function () {
 
         function setEditMode() {
             newContact.html(`
-                <form id="edit-contact-form">
-                    <td></td>
-                    <td class="contact-id center-position"></td>
-                    <td>
-                        <input class="contact-surname edit-surname" type="text">
-                        <span class="error-message edit-form">Поле не заполнено</span>
-                    </td>
-                    <td>
-                        <input class="contact-name edit-name" type="text">
-                        <span class="error-message edit-form">Поле не заполнено</span>
-                    </td>
-                    <td>
-                        <input class="contact-phone-number edit-phone-number" type="text">
-                        <span class="error-message edit-form">Поле не заполнено</span>
-                    </td>
-                    <td class="contact-buttons center-position">
-                        <img src="images/save.png"
-                             class="image-button save-button"
-                             alt="Сохранить">
-                        <img src="images/cancel.png"
-                             class="image-button cancel-button"
-                             alt="Отменить"
-                    </td>
-                </form>
+                <td class="contact-checkbox center-position"><input type="checkbox" class="checkbox" name="select"></td>
+                <td class="contact-id center-position"></td>
+                <td>
+                    <input class="contact-surname edit-surname" type="text">
+                    <span class="error-message edit-form">Поле не заполнено</span>
+                </td>
+                <td>
+                    <input class="contact-name edit-name" type="text">
+                    <span class="error-message edit-form">Поле не заполнено</span>
+                </td>
+                <td>
+                    <input class="contact-phone-number edit-phone-number" type="text">
+                    <span class="error-message edit-form">Поле не заполнено</span>
+                    <span class="existence-error edit-form">Контакт с таким номером уже существует.</span>
+                </td>
+                <td class="contact-buttons center-position">
+                    <img src="images/save.png"
+                        class="image-button save-button"
+                        alt="Сохранить">
+                    <img src="images/cancel.png"
+                        class="image-button cancel-button"
+                        alt="Отменить"
+                </td>
             `);
 
+            newContact.find(".contact-checkbox input:checkbox").prop("checked", isChecked);
             newContact.find(".contact-id").text(contactRowNumber);
             const editSurnameTextField = newContact.find(".edit-surname").val(contactSurname);
             const editNameTextField = newContact.find(".edit-name").val(contactName);
@@ -256,6 +247,10 @@ $(function () {
             if (isDeleteButtonActivated) {
                 changeContactsRowsNumbers();
             }
+
+            newContact.find(".contact-checkbox input:checkbox").change(function () {
+                isChecked = $(this).is(":checked");
+            });
 
             newContact.find(".cancel-button").click(function () {
                 setViewMode();
@@ -270,30 +265,23 @@ $(function () {
 
                 editFormTextFields.forEach(function (element) {
                     element.toggleClass("invalid", element.val().trim().length === 0);
+
+                    if (element.hasClass("existence-invalid")) {
+                        element.removeClass("existence-invalid");
+                    }
                 });
 
-                const isCorrectChangedData = checkDataValidation(editSurnameTextField) && checkDataValidation(editNameTextField) && checkDataValidation(editPhoneNumberTextField);
+                const isChangedDataCorrect = isTextFieldNotEmpty(editSurnameTextField) && isTextFieldNotEmpty(editNameTextField) && isTextFieldNotEmpty(editPhoneNumberTextField);
 
-                if (!isCorrectChangedData) {
+                if (!isChangedDataCorrect) {
                     return;
                 }
 
-                isUniqueNumber = true;
-                checkPhoneNumberExistence(changedPhoneNumber);
+                isPhoneNumberUnique(changedPhoneNumber);
 
-                if (!isUniqueNumber) {
-                    $("#existence-dialog").dialog({
-                        resizable: false,
-                        height: "auto",
-                        width: 400,
-                        modal: true,
-                        buttons: {
-                            "OK": function () {
-                                $(this).dialog("close");
-                            }
-                        }
-                    });
+                editPhoneNumberTextField.toggleClass("existence-invalid", !isPhoneNumberUnique(changedPhoneNumber));
 
+                if (!isPhoneNumberUnique(changedPhoneNumber)) {
                     return;
                 }
 

@@ -94,22 +94,30 @@
     vertical-align: top;
 }
 
-.phone-book-page .error-message {
+.phone-book-page .error-message,
+.phone-book-page .existence-error {
     display: none;
     color: #F00;
 }
 
-.phone-book-page .error-message.edit-form {
+.phone-book-page .error-message.edit-form,
+.phone-book-page .existence-error.edit-form {
     margin-left: 0;
     text-align: left;
 }
 
-.phone-book-page .invalid ~ .error-message {
+.phone-book-page .invalid ~ .error-message,
+.phone-book-page .existence-invalid ~ .existence-error {
     display: block;
 }
 
-.phone-book-page .invalid {
+.phone-book-page .invalid,
+.phone-book-page .existence-invalid {
     border-color: #F00;
+}
+
+.phone-book-page .existence-error {
+    margin-left: 170px;
 }
 
 .phone-book-page .image-button {
