@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <form class="edit-todo-form">
                         <div class="container">
                             <label>
-                                <input type="text" class="edit-text-field text-field">
+                                <input type="text" class="edit-text-field">
                                 <span class="error-message">Необходимо указать текст</span>
                             </label>
                         </div>

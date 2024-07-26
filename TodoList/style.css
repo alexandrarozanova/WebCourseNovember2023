@@ -62,3 +62,11 @@
 .todo-list-page .todo-item-text {
     width: 350px;
 }
+
+.todo-list-page .new-todo-text-field {
+    width: 503px;
+}
+
+.todo-list-page .edit-text-field {
+    width: 371px;
+}
