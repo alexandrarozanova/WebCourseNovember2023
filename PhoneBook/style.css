@@ -60,7 +60,7 @@
 
 .phone-book-page .id,
 .phone-book-page .buttons {
-    width: 50px;
+    width: 70px;
 }
 
 .phone-book-page .checkbox {
@@ -124,6 +124,7 @@
     max-width: 20px;
     max-height: 20px;
     cursor: pointer;
+    margin: 0 3px;
 }
 
 .ui-widget-overlay {

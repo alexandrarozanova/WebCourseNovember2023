@@ -46,9 +46,9 @@ $(function () {
             contactsTableBody.find(".new-contact").each(function () {
                 $(this).addClass("not-filtered");
 
-                if ($(this).find(".contact-surname").text().toLowerCase().indexOf(filterTextFieldValue) !== -1 ||
-                    $(this).find(".contact-name").text().toLowerCase().indexOf(filterTextFieldValue) !== -1 ||
-                    $(this).find(".contact-phone-number").text().toLowerCase().indexOf(filterTextFieldValue) !== -1) {
+                if ($(this).find(".contact-surname").text().toLowerCase().includes(filterTextFieldValue) ||
+                    $(this).find(".contact-name").text().toLowerCase().includes(filterTextFieldValue) ||
+                    $(this).find(".contact-phone-number").text().toLowerCase().includes(filterTextFieldValue)) {
                     $(this).removeClass("not-filtered");
                 }
 
@@ -79,9 +79,7 @@ $(function () {
             element.toggleClass("invalid", element.val().trim().length === 0);
         });
 
-        if (contactPhoneNumberTextField.hasClass("invalid")) {
-            contactPhoneNumberTextField.removeClass("existence-invalid");
-        }
+        contactPhoneNumberTextField.toggleClass("existence-invalid", !contactPhoneNumberTextField.hasClass("invalid"));
 
         function isTextFieldNotEmpty(dataTextField) {
             return dataTextField.val().trim().length !== 0;
@@ -164,10 +162,12 @@ $(function () {
                 <td class="contact-buttons center-position">
                     <img src="images/edit.png"
                          class="image-button edit-button"
-                         alt="Редактировать">
+                         alt="Редактировать"
+                         title="Редактировать">
                     <img src="images/delete.png"
                          class="image-button delete-button"
                          alt="Удалить"
+                         title="Удалить">
                 </td>
             `);
 
@@ -231,10 +231,12 @@ $(function () {
                 <td class="contact-buttons center-position">
                     <img src="images/save.png"
                         class="image-button save-button"
-                        alt="Сохранить">
+                        alt="Сохранить"
+                        title="Сохранить">
                     <img src="images/cancel.png"
                         class="image-button cancel-button"
                         alt="Отменить"
+                        title="Отменить">
                 </td>
             `);
 
@@ -243,6 +245,8 @@ $(function () {
             const editSurnameTextField = newContact.find(".edit-surname").val(contactSurname);
             const editNameTextField = newContact.find(".edit-name").val(contactName);
             const editPhoneNumberTextField = newContact.find(".edit-phone-number").val(contactPhoneNumber);
+
+            const editFormTextFields = [editSurnameTextField, editNameTextField, editPhoneNumberTextField];
 
             if (isDeleteButtonActivated) {
                 changeContactsRowsNumbers();
@@ -256,20 +260,16 @@ $(function () {
                 setViewMode();
             });
 
-            newContact.find(".save-button").click(function () {
+            function saveContactChanges() {
                 const changedContactSurname = editSurnameTextField.val().trim();
                 const changedContactName = editNameTextField.val().trim();
                 const changedPhoneNumber = editPhoneNumberTextField.val().trim();
 
-                const editFormTextFields = [editSurnameTextField, editNameTextField, editPhoneNumberTextField];
-
                 editFormTextFields.forEach(function (element) {
                     element.toggleClass("invalid", element.val().trim().length === 0);
-
-                    if (element.hasClass("existence-invalid")) {
-                        element.removeClass("existence-invalid");
-                    }
                 });
+
+                editPhoneNumberTextField.toggleClass("existence-invalid", !editPhoneNumberTextField.hasClass("invalid"));
 
                 const isChangedDataCorrect = isTextFieldNotEmpty(editSurnameTextField) && isTextFieldNotEmpty(editNameTextField) && isTextFieldNotEmpty(editPhoneNumberTextField);
 
@@ -290,6 +290,18 @@ $(function () {
                 contactPhoneNumber = changedPhoneNumber;
 
                 setViewMode();
+            }
+
+            newContact.find(".save-button").click(function () {
+                saveContactChanges();
+            });
+
+            editFormTextFields.forEach(function (textField) {
+                textField.keypress(function (key) {
+                    if (key.keyCode === 13) {
+                        saveContactChanges();
+                    }
+                });
             });
         }
 
