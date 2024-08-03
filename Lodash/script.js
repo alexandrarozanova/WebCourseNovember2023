@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
     const people = [
         {name: "Иван", age: 20},
         {name: "Максим", age: 29},
@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {name: "Петр", age: 18}
     ];
 
-    const averagePeopleAge = _.chain(people)
-        .meanBy("age")
-        .value();
+    const averagePeopleAge = _.meanBy(people, p => p.age);
 
     console.log("1. Средний возраст людей из списка: " + averagePeopleAge);
 
@@ -29,17 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const peopleUniqueNameWithAgeFrom20To30 = _.chain(people)
         .filter(p => p.age >= 20 && p.age <= 30)
         .uniqBy("name")
-        .sortBy("age")
+        .sortBy("name")
         .reverse()
         .value();
 
     console.log("3. Список людей с уникальным именем в возрасте от 20 до 30 включительно, отсортированный по убыванию: ");
     peopleUniqueNameWithAgeFrom20To30.forEach(p => console.log(p.name));
 
-    const peopleNameFrequency = _.chain(people)
-        .countBy("name")
-        .value();
+    const peopleNameFrequency = _.countBy(people, p => p.name);
 
     console.log("4. Объект в формате в формате ключ: значение (имя: кол-во людей с данным именем):");
     _.forIn(peopleNameFrequency, (frequency, name) => console.log(name + ": " + frequency));
-});
+})();
