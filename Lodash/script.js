@@ -12,8 +12,7 @@
         {name: "Петр", age: 18}
     ];
 
-    const averagePeopleAge = _.meanBy(people, p => p.age);
-
+    const averagePeopleAge = _.meanBy(people, "age");
     console.log("1. Средний возраст людей из списка: " + averagePeopleAge);
 
     const peopleWithAgeFrom20To30 = _.chain(people)
@@ -22,20 +21,21 @@
         .value();
 
     console.log("2. Список людей с возрастом от 20 до 30 включительно, отсортированный по возрастанию: ");
-    peopleWithAgeFrom20To30.forEach(p => console.log(p.name + ", " + p.age));
+    console.log(peopleWithAgeFrom20To30);
 
     const peopleUniqueNameWithAgeFrom20To30 = _.chain(people)
         .filter(p => p.age >= 20 && p.age <= 30)
-        .uniqBy("name")
-        .sortBy("name")
+        .map("name")
+        .uniq()
+        .sort()
         .reverse()
         .value();
 
     console.log("3. Список людей с уникальным именем в возрасте от 20 до 30 включительно, отсортированный по убыванию: ");
-    peopleUniqueNameWithAgeFrom20To30.forEach(p => console.log(p.name));
+    console.log(peopleUniqueNameWithAgeFrom20To30);
 
-    const peopleNameFrequency = _.countBy(people, p => p.name);
+    const peopleNamesFrequency = _.countBy(people, "name");
 
     console.log("4. Объект в формате в формате ключ: значение (имя: кол-во людей с данным именем):");
-    _.forIn(peopleNameFrequency, (frequency, name) => console.log(name + ": " + frequency));
+    _.forIn(peopleNamesFrequency, (frequency, name) => console.log(name + ": " + frequency));
 })();
