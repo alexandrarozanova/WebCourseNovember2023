@@ -4,8 +4,9 @@ Vue.createApp({})
             return {
                 items: [],
                 newTodoItemText: "",
-                newTodoItemId: 1
-            }
+                newTodoItemId: 1,
+                isTextInvalid: false
+            };
         },
 
         methods: {
@@ -15,22 +16,19 @@ Vue.createApp({})
                     text: this.newTodoItemText
                 };
 
-                const form = document.querySelector(".needs-validation");
-                form.classList.add("was-validated");
-
                 if (this.newTodoItemText.length > 0) {
+                    this.isTextInvalid = false;
+
                     this.newTodoItemId++;
 
                     this.items.push(newTodoItem);
 
                     this.newTodoItemText = "";
-
-                    form.classList.remove("was-validated");
                 } else {
+                    this.isTextInvalid = true;
+
                     e.preventDefault();
                     e.stopPropagation();
-
-                    form.classList.add("was-validated");
                 }
             },
 
@@ -44,7 +42,10 @@ Vue.createApp({})
             <div class="col-lg-6">
               <div class="row g-2 mb-3">
                 <div class="col-md-10">
-                  <input v-model="newTodoItemText" type="text" class="form-control" required>
+                  <input v-model.trim="newTodoItemText" 
+                         type="text" 
+                         class="form-control"
+                         :class="{'is-invalid': isTextInvalid}" required>
                   <div class="invalid-feedback">Необходимо указать текст</div>
                 </div>
                 <div class="col-lg-1">
@@ -73,19 +74,21 @@ Vue.createApp({})
         data() {
             return {
                 isEditing: false,
-                editingText: this.item.text
-            }
+                editingText: this.item.text,
+                isEditingTextInvalid: false
+            };
         },
 
         methods: {
             cancel() {
                 this.isEditing = false;
+                this.isEditingTextInvalid = false;
                 this.editingText = this.item.text;
             },
 
             save() {
                 if (this.editingText.length === 0) {
-                    document.querySelector(".edit-text-field").classList.add("is-invalid");
+                    this.isEditingTextInvalid = true;
 
                     return;
                 }
@@ -114,7 +117,11 @@ Vue.createApp({})
               <div class="col-lg-6">
                 <div class="row g-2 lb-3">
                   <div class="col mb-1">
-                    <input v-model="editingText" class="form-control edit-text-field" type="text">
+                    <input v-model.trim="editingText"
+                           @keydown.enter="save"
+                           class="form-control edit-text-field"
+                           :class="{'is-invalid': isEditingTextInvalid}"
+                           type="text">
                     <div class="invalid-feedback">Необходимо указать текст</div>
                   </div>
                   <div class="col-auto">
