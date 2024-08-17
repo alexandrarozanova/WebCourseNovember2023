@@ -38,14 +38,14 @@ Vue.createApp({})
         },
 
         template: `
-          <form @submit.prevent="addTodoItem" class="row justify-content-center needs-validation" novalidate>
+          <form @submit.prevent="addTodoItem" class="row justify-content-center" novalidate>
             <div class="col-lg-6">
               <div class="row g-2 mb-3">
                 <div class="col-md-10">
                   <input v-model.trim="newTodoItemText"
                          type="text"
                          class="form-control"
-                         :class="{'is-invalid': isTextInvalid}" required>
+                         :class="{ 'is-invalid': isTextInvalid }" required>
                   <div class="invalid-feedback">Необходимо указать текст</div>
                 </div>
                 <div class="col-lg-1">
@@ -120,7 +120,7 @@ Vue.createApp({})
                     <input v-model.trim="editingText"
                            @keydown.enter="save"
                            class="form-control edit-text-field"
-                           :class="{'is-invalid': isEditingTextInvalid}"
+                           :class="{ 'is-invalid': isEditingTextInvalid }"
                            type="text">
                     <div class="invalid-feedback">Необходимо указать текст</div>
                   </div>
