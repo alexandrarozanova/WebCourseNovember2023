@@ -42,8 +42,8 @@ Vue.createApp({})
             <div class="col-lg-6">
               <div class="row g-2 mb-3">
                 <div class="col-md-10">
-                  <input v-model.trim="newTodoItemText" 
-                         type="text" 
+                  <input v-model.trim="newTodoItemText"
+                         type="text"
                          class="form-control"
                          :class="{'is-invalid': isTextInvalid}" required>
                   <div class="invalid-feedback">Необходимо указать текст</div>
