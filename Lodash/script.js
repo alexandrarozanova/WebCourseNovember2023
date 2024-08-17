@@ -23,7 +23,7 @@
     console.log("2. Список людей с возрастом от 20 до 30 включительно, отсортированный по возрастанию: ");
     console.log(peopleWithAgeFrom20To30);
 
-    const peopleUniqueNameWithAgeFrom20To30 = _.chain(people)
+    const peopleUniqueNamesWithAgeFrom20To30 = _.chain(people)
         .filter(p => p.age >= 20 && p.age <= 30)
         .map("name")
         .uniq()
@@ -32,10 +32,10 @@
         .value();
 
     console.log("3. Список людей с уникальным именем в возрасте от 20 до 30 включительно, отсортированный по убыванию: ");
-    console.log(peopleUniqueNameWithAgeFrom20To30);
+    console.log(peopleUniqueNamesWithAgeFrom20To30);
 
-    const peopleNamesFrequency = _.countBy(people, "name");
+    const peopleNamesFrequencies = _.countBy(people, "name");
 
     console.log("4. Объект в формате в формате ключ: значение (имя: кол-во людей с данным именем):");
-    _.forIn(peopleNamesFrequency, (frequency, name) => console.log(name + ": " + frequency));
+    _.forIn(peopleNamesFrequencies, (frequency, name) => console.log(name + ": " + frequency));
 })();
