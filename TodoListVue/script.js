@@ -35,27 +35,29 @@ Vue.createApp({})
         },
 
         template: `
-          <div class="w-50 mx-auto">
-            <form @submit.prevent="addTodoItem" class="row justify-content-center mb-3" novalidate>
-              <div class="col">
-                <input v-model.trim="newTodoItemText"
-                       type="text"
-                       class="form-control"
-                       :class="{ 'is-invalid': isTextInvalid }" required>
-                <div class="invalid-feedback">Необходимо указать текст</div>
-              </div>
-              <div class="col-auto">
-                <button class="btn btn-primary">Добавить</button>
-              </div>
-            </form>
+          <div class="row justify-content-center">
+            <div class="col-xl-6">
+              <form @submit.prevent="addTodoItem" class="row  mb-3" novalidate>
+                <div class="col">
+                  <input v-model.trim="newTodoItemText"
+                         type="text"
+                         class="form-control"
+                         :class="{ 'is-invalid': isTextInvalid }" required>
+                  <div class="invalid-feedback">Необходимо указать текст</div>
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-primary">Добавить</button>
+                </div>
+              </form>
 
-            <ul class="list-unstyled">
-              <todo-list-item v-for="item in items"
-                              :key="item.id"
-                              :item="item"
-                              @save-item="item.text = $event"
-                              @delete-item="deleteTodoItem(item)"></todo-list-item>
-            </ul>
+              <ul class="list-unstyled">
+                <todo-list-item v-for="item in items"
+                                :key="item.id"
+                                :item="item"
+                                @save-item="item.text = $event"
+                                @delete-item="deleteTodoItem(item)"></todo-list-item>
+              </ul>
+            </div>
           </div>`
     })
     .component("TodoListItem", {
