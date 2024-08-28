@@ -37,7 +37,7 @@ Vue.createApp({})
         template: `
           <div class="row justify-content-center">
             <div class="col-xl-6">
-              <form @submit.prevent="addTodoItem" class="row  mb-3" novalidate>
+              <form @submit.prevent="addTodoItem" class="row mb-3" novalidate>
                 <div class="col">
                   <input v-model.trim="newTodoItemText"
                          type="text"
