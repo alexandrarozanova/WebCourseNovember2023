@@ -11,22 +11,18 @@ Vue.createApp({})
 
         methods: {
             addTodoItem() {
-                const newTodoItem = {
-                    id: this.newTodoItemId,
-                    text: this.newTodoItemText
-                };
-
-                if (this.newTodoItemText.length > 0) {
-                    this.isTextInvalid = false;
-
-                    this.newTodoItemId++;
-
-                    this.items.push(newTodoItem);
-
-                    this.newTodoItemText = "";
-                } else {
+                if (this.newTodoItemText.length === 0) {
                     this.isTextInvalid = true;
+
+                    return;
                 }
+
+                this.isTextInvalid = false;
+
+                this.items.push({id: this.newTodoItemId, text: this.newTodoItemText});
+
+                this.newTodoItemId++;
+                this.newTodoItemText = "";
             },
 
             deleteTodoItem(item) {
