@@ -14,10 +14,10 @@ router.get("/api/contacts", function (req, res) {
     res.send(result);
 });
 
-router.delete("/api/contacts/:id", function (req, res) {
-    const id = Number(req.params.id);
+router.delete("/api/contacts/:ids", function (req, res) {
+    const ids = req.params.ids;
 
-    contacts = contacts.filter(c => c.id !== id);
+    contacts = contacts.filter(c => !ids.includes(c.id));
 
     res.send({
         success: true,

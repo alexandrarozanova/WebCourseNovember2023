@@ -5,7 +5,7 @@
     <form @submit.prevent="createContact" class="mb-3" novalidate>
       <h2 class="h5">Добавить контакт</h2>
 
-      <div class="row g-3 form-group has-error">
+      <div class="row row-cols-1 row-cols-md-4 g-3 form-group has-error">
         <div class="col">
           <input v-model.trim="name"
                  type="text"
@@ -47,7 +47,7 @@
           <button class="btn btn-primary">Поиск</button>
         </div>
         <div>
-          <button @click="clearSearchField" type="button" class="btn btn-primary">Отменить</button>
+          <button @click="clearSearchField" type="button" class="btn btn-secondary">Отменить</button>
         </div>
         <div class="col">
           <button @click="showMultipleDeleteConfirmModal" type="button" class="btn btn-danger">Удалить выбранные
@@ -274,7 +274,9 @@ export default {
     },
 
     deleteContacts() {
-      this.selectedContacts.forEach(contact => this.service.deleteContact(contact.id).then(response => {
+      const contactsIdsToDelete = this.selectedContacts.map(contact => contact.id);
+
+      this.service.deleteContact(contactsIdsToDelete).then(response => {
         if (!response.success) {
           alert(response.message);
 
@@ -288,7 +290,7 @@ export default {
         }
 
         this.loadContacts();
-      }).catch(() => alert("Не удалось удалить контакты")));
+      }).catch(() => alert("Не удалось удалить контакты"));
     },
 
     cancel(contact) {
@@ -358,5 +360,5 @@ export default {
       }).catch(() => alert("Не удалось загрузить контакты"));
     }
   }
-}
+};
 </script>

@@ -23,15 +23,15 @@ export default class PhoneBookService {
         return executeGet(this.baseUrl, {term});
     }
 
-    deleteContact(id) {
-        return executeDelete(`${this.baseUrl}/${id}`);
+    deleteContact(ids) {
+        return executeDelete(`${this.baseUrl}/${ids}`);
     }
 
     createContact(contact) {
         return executePost(this.baseUrl, contact);
     }
 
-    editContact(Contact) {
-        return executePost(`${this.baseUrl}/${Contact.id}`, Contact);
+    editContact(contact) {
+        return executePost(`${this.baseUrl}/${contact.id}`, contact);
     }
 }
