@@ -19,7 +19,10 @@ Vue.createApp({})
 
                 this.isTextInvalid = false;
 
-                this.items.push({id: this.newTodoItemId, text: this.newTodoItemText});
+                this.items.push({
+                    id: this.newTodoItemId,
+                    text: this.newTodoItemText
+                });
 
                 this.newTodoItemId++;
                 this.newTodoItemText = "";
@@ -80,6 +83,8 @@ Vue.createApp({})
             },
 
             save() {
+                this.isEditingTextInvalid = false;
+
                 if (this.editingText.length === 0) {
                     this.isEditingTextInvalid = true;
 
