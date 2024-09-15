@@ -68,9 +68,9 @@
                    class="form-check-input">
           </th>
           <th class="col">№</th>
-          <th class="col">Имя</th>
-          <th class="col">Фамилия</th>
-          <th class="col">Номер телефона</th>
+          <th class="col column-header">Имя</th>
+          <th class="col column-header">Фамилия</th>
+          <th class="col column-header">Номер телефона</th>
           <th class="col-2"></th>
         </tr>
         </thead>
@@ -276,7 +276,7 @@ export default {
     deleteContacts() {
       const contactsIdsToDelete = this.selectedContacts.map(contact => contact.id);
 
-      this.service.deleteContact(contactsIdsToDelete).then(response => {
+      this.service.deleteContact(JSON.stringify(contactsIdsToDelete)).then(response => {
         if (!response.success) {
           alert(response.message);
 
